@@ -36,7 +36,7 @@ class DataIngestion:
             if "_id" in data.columns:
                 data = data.drop(columns=["_id"], axis=1)
 
-            data.replace(to_replace="na", value=np.NAN, inplace=True)
+            data.replace({"na":np.nan},inplace=True)
             return data
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
